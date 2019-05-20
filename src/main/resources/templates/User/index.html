@@ -6,6 +6,11 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <h1>This will be User Job Tracker Homepage</h1>
+<nav>
+    <a th:href="@{'/home/addApp/' + ${username}}">Add Application</a>
+</nav>
+
+
 
 </body>
 </html>

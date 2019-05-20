@@ -59,6 +59,13 @@ public class LoginController {
             return "Login/register";
         }
 
+        if (!newUser.getPassword().equals(newUser.getVerify())) {
+            model.addAttribute("title", "Carme | Register");
+            model.addAttribute("verifyError", "Passwords do not match");
+            model.addAttribute(newUser);
+            return "Login/register";
+        }
+
         String username = newUser.getUsername();
         return "redirect:/home/" + username;
         //TODO: BETTER VALIDATION HERE

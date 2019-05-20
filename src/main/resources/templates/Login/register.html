@@ -10,6 +10,8 @@
 
 <p>Please fill in the information below to register.</p>
 
+<hr />
+
 <form method="post" th:object="${user}">
 
     <div>
@@ -44,12 +46,13 @@
     <div>
         <label th:for="${verify}">Verify Password</label>
         <input type= "password" th:field="*{verify}" />
-        <span th:errors="*{verify}" class="error"></span>
+        <span th:errors="*{verify}" class="error" ></span>
     </div>
+    <span th:text="${verifyError}" class="error"></span>
 
     <br />
 
-    <input type="submit" value="Login"/>
+    <input type="submit" value="Register"/>
 
 </form>
 
