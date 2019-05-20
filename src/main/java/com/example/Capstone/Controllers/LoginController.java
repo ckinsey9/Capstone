@@ -39,6 +39,8 @@ public class LoginController {
 
         String username = currentUser.getUsername();
         return "redirect:/home/" + username;
+        //TODO: BETTER VALIDATION HERE
+
     }
 
     @RequestMapping(value="register")
@@ -46,6 +48,20 @@ public class LoginController {
         model.addAttribute("title", "Carme | Register");
         model.addAttribute(new User());
         return "Login/register";
+    }
+
+    @RequestMapping(value="register", method= RequestMethod.POST)
+    public String processUserRegister(@ModelAttribute @Valid User newUser, Errors errors,
+                                      Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Carme | Register");
+            model.addAttribute(newUser);
+            return "Login/register";
+        }
+
+        String username = newUser.getUsername();
+        return "redirect:/home/" + username;
+        //TODO: BETTER VALIDATION HERE
     }
 
 
