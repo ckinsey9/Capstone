@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1>Welcome to Carme!</h1>
+<p>Please login to access your personal tracker or <a href="/register">Register here!</a></p>
+
+<hr />
+<br />
+<form method="post" th:object="${user}">
+
+    <div>
+    <label th:for="${username}">Username</label>
+    <input th:field="*{username}"/>
+    <span th:errors="*{username}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${email}">Email</label>
+        <input th:field="*{email}" />
+        <span th:errors="*{email}" class="error"></span>
+    </div>
+
+    <div>
+    <label th:for="${password}">Password</label>
+    <input type= "password" th:field="*{password}" />
+    <span th:errors="*{password}" class="error"></span>
+    </div>
+
+    <br />
+
+    <input type="submit" value="Login"/>
+
+</form>
+
+
+
+</body>
+</html>

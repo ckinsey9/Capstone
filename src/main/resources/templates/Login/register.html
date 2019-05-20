@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1>Welcome to Carme!</h1>
+
+<p>Please fill in the information below to register.</p>
+
+<form method="post" th:object="${user}">
+
+    <div>
+        <label th:for="${firstName}">First Name</label>
+        <input th:field="*{firstName}" />
+        <span th:errors="*{firstName}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${lastName}">Last Name</label>
+        <input th:field="*{lastName}" />
+        <span th:errors="*{lastName}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${username}">Username</label>
+        <input th:field="*{username}"/>
+        <span th:errors="*{username}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${email}">Email</label>
+        <input th:field="*{email}" />
+        <span th:errors="*{email}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${password}">Password</label>
+        <input type= "password" th:field="*{password}" />
+        <span th:errors="*{password}" class="error"></span>
+    </div>
+    <div>
+        <label th:for="${verify}">Verify Password</label>
+        <input type= "password" th:field="*{verify}" />
+        <span th:errors="*{verify}" class="error"></span>
+    </div>
+
+    <br />
+
+    <input type="submit" value="Login"/>
+
+</form>
+
+</body>
+</html>
