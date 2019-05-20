@@ -1,6 +1,6 @@
 package com.example.Capstone.Controllers;
 
-import com.example.Capstone.Models.JobApp;
+import com.example.Capstone.Models.App;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +21,7 @@ public class UserController {
     @RequestMapping(value="addApp/{username}", method = RequestMethod.GET)
     public String userAddApp(@PathVariable String username, Model model) {
         model.addAttribute("title", "AddApp | " + username);
-        model.addAttribute(new JobApp());
+        model.addAttribute(new App());
         return "User/addApp";
     }
 

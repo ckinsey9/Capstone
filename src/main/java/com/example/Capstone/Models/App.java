@@ -1,13 +1,16 @@
 package com.example.Capstone.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-//@Entity
-public class JobApp {
+@Entity
+public class App {
 
-    //@Id
-    //@GeneratedValue
+    @Id
+    @GeneratedValue
     private int jobId;
 
     @NotNull
@@ -31,7 +34,7 @@ public class JobApp {
     //add a priority field?
 
 
-    public JobApp(String name, String company, String description, double salary, String location) {
+    public App(String name, String company, String description, double salary, String location) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -39,7 +42,7 @@ public class JobApp {
         this.location = location;
     }
 
-    public JobApp() { }
+    public App() { }
 
     public int getJobId() {
         return jobId;
