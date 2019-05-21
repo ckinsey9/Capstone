@@ -1,6 +1,8 @@
 package com.example.Capstone.Controllers;
 
+import com.example.Capstone.Models.Data.UserDao;
 import com.example.Capstone.Models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -9,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="")
 public class LoginController {
+
+    @Autowired
+    private UserDao userDao;
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -67,6 +73,18 @@ public class LoginController {
         }
 
         String username = newUser.getUsername();
+
+        //used to check if the registered username is unique
+        for (User user : userDao.findAll()) {
+            if (user.getUsername().equals(username)) {
+                model.addAttribute("title", "Carme | Register");
+                model.addAttribute("verifyError", "Username taken, please pick another");
+                model.addAttribute(newUser);
+                return "Login/register";
+            }
+        }
+
+        userDao.save(newUser);
         return "redirect:/home/" + username;
         //TODO: BETTER VALIDATION HERE
     }
