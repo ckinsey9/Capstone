@@ -1,10 +1,10 @@
 package com.example.Capstone.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -34,6 +34,12 @@ public class User {
     @NotNull
     @Size(min=1, max=100, message = "Please enter a valid email")
     private String email;
+
+
+    //TODO: FIGURE OUT WHY MYSQL HAS TWO "USER_ID" COLUMNS
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<App> apps = new ArrayList<>();
 
     public User(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
@@ -95,5 +101,15 @@ public class User {
 
     public void setVerify(String verify) {
         this.verify = verify;
+    }
+
+    //added to have each user's list of apps
+    public List<App> getApps() {
+        return apps;
+    }
+
+    //Add Method
+    public void addApp(App app)  {
+        apps.add(app);
     }
 }

@@ -2,6 +2,8 @@ package com.example.Capstone.Controllers;
 
 import com.example.Capstone.Models.App;
 import com.example.Capstone.Models.Data.AppDao;
+import com.example.Capstone.Models.Data.UserDao;
+import com.example.Capstone.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +22,14 @@ public class UserController {
     @Autowired
     private AppDao appDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
     public String userHomePage(@PathVariable String username, Model model) {
         model.addAttribute("title", "Home | " + username);
-        model.addAttribute("apps", appDao.findAll());
+        //this line used to display just the logged in user's apps
+        model.addAttribute("apps", userDao.findByUsername(username).getApps());
         model.addAttribute("username", username);
         return "User/index";
     }
@@ -45,6 +51,9 @@ public class UserController {
             return "User/addApp";
         }
 
+        User currentUser = userDao.findByUsername(username);
+        newApp.setUser(currentUser);
+        currentUser.addApp(newApp);
         appDao.save(newApp);
         return "redirect:/home/" + username;
     }
