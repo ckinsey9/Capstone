@@ -44,8 +44,20 @@ public class LoginController {
         }
 
         String username = currentUser.getUsername();
-        return "redirect:/home/" + username;
-        //TODO: BETTER VALIDATION HERE
+        String password = currentUser.getPassword();
+
+        for (User user : userDao.findAll()) {
+            if (user.getUsername().equals(username) & user.getPassword().equals(password)) {
+                return "redirect:/home/" + username;
+            }
+        }
+
+        model.addAttribute("title", "Carme | Login");
+        model.addAttribute("verifyError", "Login error: Please try again or register an account");
+        model.addAttribute(currentUser);
+        return "Login/login";
+
+
 
     }
 
