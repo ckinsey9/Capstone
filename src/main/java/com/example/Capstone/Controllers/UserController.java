@@ -58,6 +58,15 @@ public class UserController {
         return "redirect:/home/" + username;
     }
 
+    @RequestMapping(value = "editApp/{username}/{appId}", method = RequestMethod.GET)
+    public String userEditApp(@PathVariable int appId, @PathVariable String username,
+                              Model model) {
+        App editApp = appDao.findOne(appId);
+        model.addAttribute("title", "Edit App | " + username);
+        model.addAttribute(editApp);
+        return "User/editApp";
+    }
+
 }
 
 //TODO: CHANGE OUT TEMP STYLING FOR STYLE SHEET

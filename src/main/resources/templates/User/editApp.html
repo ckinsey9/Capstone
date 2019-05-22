@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1>Edit Application Below</h1>
+<hr />
+
+<form method="post" th:object="${app}">
+
+    <div>
+        <label th:for="${name}">Name</label>
+        <input th:field="*{name}" th:value="${app.name}"/>
+        <span th:errors="*{name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${company}">Company</label>
+        <input th:field="*{company}" th:value="${app.company}"/>
+        <span th:errors="*{company}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${description}">Description</label>
+        <input th:field="*{description}" th:value="${app.description}"/>
+        <span th:errors="*{description}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${location}">Location</label>
+        <input th:field="*{location}" th:value="${app.location}"/>
+        <span th:errors="*{location}" class="error"></span>
+    </div>
+
+    <!--
+    <div>
+        <label th:for="${salary}">Salary</label>
+        <select th:field="*{salary}" />
+        <option th:each="category : ${categories}"
+                th:text="${category.name}"
+                th:value="${category.id}"></option>
+        </select>
+        <span th:errors="*{salary}" class="error"></span>
+    </div>
+    -->
+
+    <br />
+
+    <input type="hidden" th:value="${app.appId}" name="appId" />
+
+    <input type="submit" value="Edit Application"/>
+
+</form>
+
+
+
+</body>
+</html>

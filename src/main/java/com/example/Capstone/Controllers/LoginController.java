@@ -46,6 +46,7 @@ public class LoginController {
         String username = currentUser.getUsername();
         String password = currentUser.getPassword();
 
+        //TODO: CLEAN THIS UP BY ADDING BOOLEAN METHOD TO USERDAO?
         for (User user : userDao.findAll()) {
             if (user.getUsername().equals(username) & user.getPassword().equals(password)) {
                 return "redirect:/home/" + username;
