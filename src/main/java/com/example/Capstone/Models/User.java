@@ -11,7 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private int userId;
+    private int id;
 
     @Size(min=1, max=50)
     private String firstName;
@@ -35,8 +35,6 @@ public class User {
     @Size(min=1, max=100, message = "Please enter a valid email")
     private String email;
 
-
-    //TODO: FIGURE OUT WHY MYSQL HAS TWO "USER_ID" COLUMNS
     @OneToMany
     @JoinColumn(name = "user_id")
     private List<App> apps = new ArrayList<>();
@@ -52,7 +50,7 @@ public class User {
     public User() {}
 
     public int getUserId() {
-        return userId;
+        return id;
     }
 
     public String getFirstName() {
