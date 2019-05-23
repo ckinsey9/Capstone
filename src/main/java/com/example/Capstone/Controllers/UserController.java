@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -32,6 +29,18 @@ public class UserController {
         model.addAttribute("apps", userDao.findByUsername(username).getApps());
         model.addAttribute("username", username);
         return "User/index";
+    }
+
+    //remove handler here
+    @RequestMapping(value="/{username}", method = RequestMethod.POST)
+    public String processRemoveApp(@PathVariable String username,
+                                   @RequestParam (value = "appIds",
+            required = false, defaultValue = "") int[] appIds) {
+        for (int appId : appIds) {
+            appDao.delete(appId);
+        }
+        return "redirect:/home/" + username;
+
     }
 
     @RequestMapping(value="addApp/{username}", method = RequestMethod.GET)
@@ -88,6 +97,8 @@ public class UserController {
         return "redirect:/home/" + username;
 
     }
+
+
 
 }
 

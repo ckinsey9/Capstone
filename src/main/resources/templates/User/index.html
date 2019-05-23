@@ -7,6 +7,7 @@
 
 <h1>Application Tracker</h1>
 
+<form method="post">
 <table class="table">
 
     <tr>
@@ -15,8 +16,11 @@
         <th>Description</th>
         <th>Location</th>
         <th>Salary</th>
+        <th>Edit App</th>
+        <th>Delete App</th>
 
     </tr>
+
 
     <tr th:each="app : ${apps}">
         <td th:text="${app.name}"></td>
@@ -25,14 +29,20 @@
         <td th:text="${app.location}"></td>
         <td th:text="${app.salary}"></td>
         <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}">Edit</a></td>
+        <!--checkbox if want to delete app-->
+
+        <td><input type="checkbox" name="appIds" th:value="${app.appId}" th:id="${app.appId}"/>
+        </td>
     </tr>
 
 </table>
 
 <br />
 <nav>
-    <a th:href="@{'/home/addApp/' + ${username}}">Add Application</a>
+    <a th:href="@{'/home/addApp/' + ${username}}">Add App</a> |
+    <input type="submit" value="Delete Selected App(s)" />
 </nav>
+</form>
 
 
 
