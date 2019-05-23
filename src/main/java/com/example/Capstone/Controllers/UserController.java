@@ -67,6 +67,28 @@ public class UserController {
         return "User/editApp";
     }
 
+    @RequestMapping(value= "editApp/{username}/{appId}", method = RequestMethod.POST)
+    public String processUserEditApp(@PathVariable int appId, @PathVariable String username,
+                                     @ModelAttribute @Valid App editApp, Errors errors,
+                                     Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Edit App | " + username);
+            model.addAttribute(editApp);
+            return "User/editApp";
+        }
+
+        //TODO: CLEANER WAY TO DO THIS?
+        App originalApp = appDao.findOne(appId);
+        originalApp.setName(editApp.getName());
+        originalApp.setCompany(editApp.getCompany());
+        originalApp.setDescription(editApp.getDescription());
+        originalApp.setLocation(editApp.getLocation());
+        //originalApp.setSalary(editApp.getSalary());
+        appDao.save(originalApp);
+        return "redirect:/home/" + username;
+
+    }
+
 }
 
 //TODO: CHANGE OUT TEMP STYLING FOR STYLE SHEET
