@@ -34,17 +34,11 @@
         <span th:errors="*{location}" class="error"></span>
     </div>
 
-    <!--
-    <div>
-        <label th:for="${salary}">Salary</label>
-        <select th:field="*{salary}" />
-        <option th:each="category : ${categories}"
-                th:text="${category.name}"
-                th:value="${category.id}"></option>
-        </select>
-        <span th:errors="*{salary}" class="error"></span>
+
+    <div th:replace= "User/addApp :: salary">
+
     </div>
-    -->
+
 
     <br />
 

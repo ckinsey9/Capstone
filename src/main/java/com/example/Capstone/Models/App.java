@@ -24,7 +24,7 @@ public class App {
     private String description;
 
     //add validation for this?
-    private double salary;
+    private String salary;
 
     @NotNull
     private String location;
@@ -34,7 +34,7 @@ public class App {
     @ManyToOne
     private User user;
 
-    public App(String name, String company, String description, double salary, String location) {
+    public App(String name, String company, String description, String salary, String location) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -72,11 +72,11 @@ public class App {
         this.description = description;
     }
 
-    public double getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 

@@ -34,17 +34,24 @@
         <span th:errors="*{location}" class="error"></span>
     </div>
 
-    <!--
-    <div>
-        <label th:for="${salary}">Salary</label>
-        <select th:field="*{salary}" />
-        <option th:each="category : ${categories}"
-                th:text="${category.name}"
-                th:value="${category.id}"></option>
+
+    <div th:fragment = "salary">
+        <label th:for="${salary}">Salary (/Year)</label>
+        <select th:field="*{salary}" th:value="${app.salary}">
+        <option th:value="'Less than 20K'">Less than 20K</option>
+        <option th:value="'20K-30K'">20K-30K</option>
+        <option th:value="'30K-40K'">30K-40K</option>
+        <option th:value="'40K-50K'">40K-50K</option>
+        <option th:value="'50K-60K'">50K-60K</option>
+        <option th:value="'60K-70K'">60K-70K</option>
+        <option th:value="'70K-80K'">70K-80K</option>
+        <option th:value="'80K-90K'">80K-90K</option>
+        <option th:value="'90K-100K'">90K-100K</option>
+        <option th:value="'More than 100K'">More than 100K</option>
         </select>
         <span th:errors="*{salary}" class="error"></span>
     </div>
-    -->
+
 
     <br />
 

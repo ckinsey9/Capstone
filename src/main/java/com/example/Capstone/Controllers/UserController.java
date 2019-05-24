@@ -92,14 +92,13 @@ public class UserController {
         originalApp.setCompany(editApp.getCompany());
         originalApp.setDescription(editApp.getDescription());
         originalApp.setLocation(editApp.getLocation());
-        //originalApp.setSalary(editApp.getSalary());
+        originalApp.setSalary(editApp.getSalary());
         appDao.save(originalApp);
         return "redirect:/home/" + username;
 
     }
 
 
-
+//TODO: CHANGE OUT TEMP STYLING FOR STYLE SHEET
 }
 
-//TODO: CHANGE OUT TEMP STYLING FOR STYLE SHEET
