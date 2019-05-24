@@ -11,11 +11,14 @@
 <table class="table">
 
     <tr>
-        <th>Name</th>
+        <th>Position</th>
         <th>Company</th>
         <th>Description</th>
         <th>Location</th>
         <th>Salary</th>
+        <th>Phase</th>
+        <th>Benefits/Notes</th>
+        <th>Website Link</th>
         <th>Edit App</th>
         <th>Delete App</th>
 
@@ -28,6 +31,9 @@
         <td th:text="${app.description}"></td>
         <td th:text="${app.location}"></td>
         <td th:text="${app.salary}"></td>
+        <td th:text="${app.phase}"></td>
+        <td th:text="${app.notes}"></td>
+        <td><a th:href="${app.website}" target="_blank">Link</a></td>
         <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}">Edit</a></td>
         <!--checkbox if want to delete app-->
 

@@ -23,23 +23,33 @@ public class App {
     @Size(min=5, max=50)
     private String description;
 
-    //add validation for this?
+    @NotNull
     private String salary;
 
     @NotNull
     private String location;
 
-    //add a priority field?
+    //added fields
+    private String notes;
+
+    private String website;
+
+    @NotNull
+    private String phase;
 
     @ManyToOne
     private User user;
 
-    public App(String name, String company, String description, String salary, String location) {
+    public App(String name, String company, String description, String salary, String location,
+               String notes, String website, String phase) {
         this.name = name;
         this.company = company;
         this.description = description;
         this.salary = salary;
         this.location = location;
+        this.notes = notes;
+        this.website = website;
+        this.phase = phase;
     }
 
     public App() { }
@@ -96,6 +106,30 @@ public class App {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getPhase() {
+        return phase;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
     }
 }
 

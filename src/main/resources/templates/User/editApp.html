@@ -11,7 +11,7 @@
 <form method="post" th:object="${app}">
 
     <div>
-        <label th:for="${name}">Name</label>
+        <label th:for="${name}">Position</label>
         <input th:field="*{name}" th:value="${app.name}"/>
         <span th:errors="*{name}" class="error"></span>
     </div>
@@ -32,6 +32,18 @@
         <label th:for="${location}">Location</label>
         <input th:field="*{location}" th:value="${app.location}"/>
         <span th:errors="*{location}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${website}">Website Link</label>
+        <input th:field="*{website}" th:value="${app.website}"/>
+        <span th:errors="*{website}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="${notes}">Benefits/Notes</label>
+        <textarea th:field="*{notes}" th:value="${app.notes}"></textarea>
+        <span th:errors="*{notes}" class="error"></span>
     </div>
 
 

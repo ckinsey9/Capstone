@@ -93,6 +93,9 @@ public class UserController {
         originalApp.setDescription(editApp.getDescription());
         originalApp.setLocation(editApp.getLocation());
         originalApp.setSalary(editApp.getSalary());
+        originalApp.setNotes(editApp.getNotes());
+        originalApp.setPhase(editApp.getPhase());
+        originalApp.setWebsite(editApp.getWebsite());
         appDao.save(originalApp);
         return "redirect:/home/" + username;
 

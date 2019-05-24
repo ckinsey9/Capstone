@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head">
 </head>
 <body>
@@ -11,7 +11,7 @@
 <form method="post" th:object="${app}">
 
     <div>
-        <label th:for="${name}">Name</label>
+        <label th:for="${name}">Position</label>
         <input th:field="*{name}" />
         <span th:errors="*{name}" class="error"></span>
     </div>
@@ -34,8 +34,20 @@
         <span th:errors="*{location}" class="error"></span>
     </div>
 
+    <div>
+        <label th:for="${website}">Website Link</label>
+        <input th:field="*{website}" />
+        <span th:errors="*{website}" class="error"></span>
+    </div>
 
-    <div th:fragment = "salary">
+    <div>
+        <label th:for="${notes}">Benefits/Notes</label>
+        <textarea th:field="*{notes}"></textarea>
+        <span th:errors="*{notes}" class="error"></span>
+    </div>
+
+<div th:fragment = "salary">
+    <div >
         <label th:for="${salary}">Salary (/Year)</label>
         <select th:field="*{salary}" th:value="${app.salary}">
         <option th:value="'Less than 20K'">Less than 20K</option>
@@ -51,6 +63,19 @@
         </select>
         <span th:errors="*{salary}" class="error"></span>
     </div>
+
+    <div>
+        <label th:for="${phase}">Phase</label>
+        <select th:field="*{phase}" th:value="${app.phase}">
+            <option th:value="'Working on Application'">Working on Application</option>
+            <option th:value="'Application Submitted'">Application Submitted</option>
+            <option th:value="'Interviewing'">Interviewing</option>
+            <option th:value="'Application Rejected'">Application Rejected</option>
+            <option th:value="'Other'">Other</option>
+        </select>
+        <span th:errors="*{phase}" class="error"></span>
+    </div>
+</div>
 
 
     <br />
