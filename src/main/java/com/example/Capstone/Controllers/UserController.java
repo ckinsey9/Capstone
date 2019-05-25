@@ -31,7 +31,6 @@ public class UserController {
         return "User/index";
     }
 
-    //remove handler here
     @RequestMapping(value="/{username}", method = RequestMethod.POST)
     public String processRemoveApp(@PathVariable String username,
                                    @RequestParam (value = "appIds",
@@ -86,16 +85,13 @@ public class UserController {
             return "User/editApp";
         }
 
-        //TODO: CLEANER WAY TO DO THIS?
         App originalApp = appDao.findOne(appId);
-        originalApp.setName(editApp.getName());
-        originalApp.setCompany(editApp.getCompany());
-        originalApp.setDescription(editApp.getDescription());
-        originalApp.setLocation(editApp.getLocation());
-        originalApp.setSalary(editApp.getSalary());
-        originalApp.setNotes(editApp.getNotes());
-        originalApp.setPhase(editApp.getPhase());
-        originalApp.setWebsite(editApp.getWebsite());
+
+        originalApp.setAll(editApp.getName(),
+                            editApp.getCompany(), editApp.getDescription(),
+                            editApp.getSalary(), editApp.getLocation(), editApp.getNotes(),
+                            editApp.getWebsite(), editApp.getPhase());
+
         appDao.save(originalApp);
         return "redirect:/home/" + username;
 
