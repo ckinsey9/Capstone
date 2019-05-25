@@ -31,7 +31,7 @@ public class User {
     @Size(min=8, max=30)
     private String verify;
 
-    @NotNull
+    //@NotNull
     @Size(min=1, max=100, message = "Please enter a valid email")
     private String email;
 
