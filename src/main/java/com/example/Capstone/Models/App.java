@@ -131,6 +131,18 @@ public class App {
     public void setPhase(String phase) {
         this.phase = phase;
     }
+
+    public void setAll(String name, String company, String description, String salary, String location,
+                       String notes, String website, String phase) {
+        this.name = name;
+        this.company = company;
+        this.description = description;
+        this.salary = salary;
+        this.location = location;
+        this.notes = notes;
+        this.website = website;
+        this.phase = phase;
+    }
 }
 
 //TODO: DECIDE ON MORE FIELDS FOR CLASS
