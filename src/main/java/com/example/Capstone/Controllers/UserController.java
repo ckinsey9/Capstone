@@ -11,6 +11,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="home")
@@ -24,9 +26,42 @@ public class UserController {
 
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
     public String userHomePage(@PathVariable String username, Model model) {
+        List<App> userApps = userDao.findByUsername(username).getApps();
+        List<Iterable> sortedApps = new ArrayList<>();
+
+        List<App> interviewApps = new ArrayList<>();
+        List<App> rejectedApps = new ArrayList<>();
+        List<App> workingApps = new ArrayList<>();
+        List<App> submittedApps = new ArrayList<>();
+        List<App> otherApps = new ArrayList<>();
+
+        for (App app: userApps) {
+            if (app.getPhase().equals("Interviewing")) {
+                interviewApps.add(app);
+            }
+            if (app.getPhase().equals("Application Submitted")) {
+                submittedApps.add(app);
+            }
+            if (app.getPhase().equals("Application Rejected")) {
+                rejectedApps.add(app);
+            }
+            if (app.getPhase().equals("Working on Application")) {
+                workingApps.add(app);
+            }
+            if (app.getPhase().equals("Other")) {
+                otherApps.add(app);
+            }
+        }
+        sortedApps.add(interviewApps);
+        sortedApps.add(workingApps);
+        sortedApps.add(submittedApps);
+        sortedApps.add(otherApps);
+        sortedApps.add(rejectedApps);
+
+
         model.addAttribute("title", "Home | " + username);
         //this line used to display just the logged in user's apps
-        model.addAttribute("apps", userDao.findByUsername(username).getApps());
+        model.addAttribute("appLists", sortedApps);
         model.addAttribute("username", username);
         return "User/index";
     }

@@ -12,4 +12,6 @@ public interface UserDao extends CrudRepository<User, Integer> {
 
     //added method to grab user data by username, not just Id
     User findByUsername(String username);
+
+
 }

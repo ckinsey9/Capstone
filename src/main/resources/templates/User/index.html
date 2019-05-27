@@ -8,11 +8,16 @@
 <h1>Application Tracker</h1>
 
 <form method="post">
-<table class="table">
+<table class="table" th:each="applist : ${appLists}">
 
-    <tr>
+
+
+    <h4 th:unless="${applist.isEmpty()}" >Table Header</h4> <!--TODO: FIGURE OUT HOW TO ACCESS THE PHASE TITLE-->
+
+
+    <tr th:unless="${applist.isEmpty()}">
         <th>Position</th>
-        <th>Company</th>
+        <th>Company/School</th>
         <th>Description</th>
         <th>Location</th>
         <th>Salary</th>
@@ -25,7 +30,7 @@
     </tr>
 
 
-    <tr th:each="app : ${apps}">
+    <tr th:each="app : ${applist}">
         <td th:text="${app.name}"></td>
         <td th:text="${app.company}"></td>
         <td th:text="${app.description}"></td>
@@ -40,15 +45,23 @@
         <td><input type="checkbox" name="appIds" th:value="${app.appId}" th:id="${app.appId}"/>
         </td>
     </tr>
-
+    <br />
 </table>
 
 <br />
+
+
+
+
+
+
 <nav>
     <a th:href="@{'/home/addApp/' + ${username}}">Add App</a> |
     <input type="submit" value="Delete Selected App(s)" />
 </nav>
 </form>
+
+
 
 
 

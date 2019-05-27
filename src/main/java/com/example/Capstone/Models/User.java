@@ -39,6 +39,8 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<App> apps = new ArrayList<>();
 
+
+
     public User(String firstName, String lastName, String username, String password, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
