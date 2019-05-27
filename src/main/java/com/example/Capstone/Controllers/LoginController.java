@@ -20,6 +20,7 @@ public class LoginController {
     @Autowired
     private UserDao userDao;
 
+   // private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
@@ -97,6 +98,8 @@ public class LoginController {
             }
         }
 
+        //String safePass = encoder.encode(newUser.getPassword());
+        //newUser.setPassword(safePass);
         userDao.save(newUser);
         return "redirect:/home/" + username;
         //TODO: BETTER VALIDATION HERE

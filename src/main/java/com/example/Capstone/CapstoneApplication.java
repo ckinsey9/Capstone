@@ -3,11 +3,13 @@ package com.example.Capstone;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import static org.springframework.boot.SpringApplication.*;
+
 @SpringBootApplication
 public class CapstoneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CapstoneApplication.class, args);
+		run(CapstoneApplication.class, args);
 	}
 
 }

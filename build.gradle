@@ -28,6 +28,10 @@ dependencies {
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
+
+	//TODO: WHY IS SECURITY NOT WORKING
+	//compile("org.springframework.boot:spring-boot-starter-security")
+
 }
 
 bootRun {
