@@ -5,49 +5,12 @@
 <body>
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1>Edit Application Below</h1>
+<h1>Edit Application</h1>
 <hr />
 
-<form method="post" th:object="${app}">
+<form method="post" th:object="${app}" class="form-horizontal">
 
-    <div>
-        <label th:for="${name}">Position</label>
-        <input th:field="*{name}" th:value="${app.name}"/>
-        <span th:errors="*{name}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="${company}">Company/School</label>
-        <input th:field="*{company}" th:value="${app.company}"/>
-        <span th:errors="*{company}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="${description}">Description</label>
-        <input th:field="*{description}" th:value="${app.description}"/>
-        <span th:errors="*{description}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="${location}">Location</label>
-        <input th:field="*{location}" th:value="${app.location}"/>
-        <span th:errors="*{location}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="${website}">Website Link</label>
-        <input th:field="*{website}" th:value="${app.website}"/>
-        <span th:errors="*{website}" class="error"></span>
-    </div>
-
-    <div>
-        <label th:for="${notes}">Benefits/Notes</label>
-        <textarea th:field="*{notes}" th:value="${app.notes}"></textarea>
-        <span th:errors="*{notes}" class="error"></span>
-    </div>
-
-
-    <div th:replace= "User/addApp :: salary">
+    <div th:replace="User/addApp :: appForm">
 
     </div>
 
@@ -56,7 +19,9 @@
 
     <input type="hidden" th:value="${app.appId}" name="appId" />
 
-    <input type="submit" value="Edit Application"/>
+    <div class="col-sm-3 col-sm-offset-3">
+    <input type="submit" value="Edit Application" class="form-control"/>
+    </div>
 
 </form>
 
