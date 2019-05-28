@@ -12,7 +12,7 @@
 
 
 
-    <h4 th:unless="${applist.isEmpty()}" >Table Header</h4> <!--TODO: FIGURE OUT HOW TO ACCESS THE PHASE TITLE-->
+    <h4 th:unless="${applist.isEmpty()}" th:text="${applist[0].phase}">Table Header</h4>
 
 
     <tr th:unless="${applist.isEmpty()}">
