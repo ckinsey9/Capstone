@@ -39,6 +39,12 @@
     </div>
 
     <div>
+        <label th:for="${address}">Address</label>
+        <input th:field="*{address}" />
+        <span th:errors="*{address}" class="error"></span>
+    </div>
+
+    <div>
         <label th:for="${password}">Password</label>
         <input type= "password" th:field="*{password}" />
         <span th:errors="*{password}" class="error"></span>

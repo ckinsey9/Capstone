@@ -31,6 +31,9 @@ public class User {
     @Size(min=8, max=30)
     private String verify;
 
+    @Size(min=1, message = "Please enter a valid address")
+    private String address;
+
     //@NotNull
     @Size(min=1, max=100, message = "Please enter a valid email")
     private String email;
@@ -41,12 +44,13 @@ public class User {
 
 
 
-    public User(String firstName, String lastName, String username, String password, String email) {
+    public User(String firstName, String lastName, String username, String password, String email, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.address = address;
     }
 
     public User() {}
@@ -93,6 +97,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getVerify() {

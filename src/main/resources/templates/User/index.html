@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head">
 </head>
 <body>
 <nav th:replace="fragments :: navigation"></nav>
 
+
+
 <h1>Application Tracker</h1>
+<hr />
+
+<!--TODO: MAKE THIS WORK
+<p th:unless="${appLists[0]} and ${appLists[0].size()}">
+    No applications! Please start by adding an application using the button below.</p>
+    -->
 
 <form method="post">
-<table class="table" th:each="applist : ${appLists}">
+
+<table class="table"  th:each="applist : ${appLists}">
 
 
 
     <h4 th:unless="${applist.isEmpty()}" th:text="${applist[0].phase}">Table Header</h4>
 
+    <!--TODO: ATTEMPT TO SORT BY CLICKING ON HEADERS...JS? OR NEW HANDLERS?-->
 
     <tr th:unless="${applist.isEmpty()}">
         <th>Position</th>
@@ -28,6 +38,8 @@
         <th>Delete App</th>
 
     </tr>
+
+
 
 
     <tr th:each="app : ${applist}">
@@ -46,6 +58,8 @@
         </td>
     </tr>
     <br />
+
+
 </table>
 
 <br />
@@ -54,7 +68,7 @@
 
 
 
-
+<hr />
 <nav>
     <button><a th:href="@{'/home/addApp/' + ${username}}">Add App</a></button> |
     <input type="submit" value="Delete Selected App(s)" />

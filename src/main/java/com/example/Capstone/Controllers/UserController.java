@@ -59,6 +59,8 @@ public class UserController {
         sortedApps.add(rejectedApps);
 
 
+
+
         model.addAttribute("title", "Home | " + username);
         //this line used to display just the logged in user's apps
         model.addAttribute("appLists", sortedApps);

@@ -30,8 +30,10 @@ public class App {
     private String location;
 
     //added fields
+    @Size(max=250)
     private String notes;
 
+    @Size(max=250)
     private String website;
 
     @NotNull
