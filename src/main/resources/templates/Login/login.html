@@ -10,26 +10,32 @@
 
 <hr />
 <br />
-<form method="post" th:object="${user}">
+<form method="post" th:object="${user}" class="form-horizontal">
 
-    <div>
-    <label th:for="${username}">Username</label>
-    <input th:field="*{username}"/>
+    <div class="form-group">
+    <label th:for="${username}" class="control-label col-sm-2">Username:</label>
+        <div class="col-sm-4">
+    <input th:field="*{username}" class="form-control"/>
     <span th:errors="*{username}" class="error"></span>
+    </div>
     </div>
 
 
-    <div>
-    <label th:for="${password}">Password</label>
-    <input type= "password" th:field="*{password}" />
+    <div class="form-group">
+    <label th:for="${password}" class="control-label col-sm-2">Password:</label>
+        <div class="col-sm-4">
+    <input type= "password" th:field="*{password}" class="form-control"/>
     <span th:errors="*{password}" class="error"></span>
+    </div>
     </div>
 
     <br />
     <span th:text="${verifyError}" class="error"></span>
 
     <br />
-    <input type="submit" value="Login"/>
+    <div class="col-sm-3 col-sm-offset-3">
+    <input type="submit" value="Login" class="form-control" />
+    </div>
 
 </form>
 

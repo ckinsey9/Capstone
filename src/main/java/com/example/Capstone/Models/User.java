@@ -24,7 +24,7 @@ public class User {
     private String username;
 
     @NotNull
-    @Size(min=8, max=30)
+    @Size(min=8, max=30, message= "")
     private String password;
 
 

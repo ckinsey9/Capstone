@@ -12,53 +12,70 @@
 
 <hr />
 
-<form method="post" th:object="${user}">
+<form method="post" th:object="${user}" class="form-horizontal">
 
-    <div>
-        <label th:for="${firstName}">First Name</label>
-        <input th:field="*{firstName}" />
+    <div class="form-group">
+        <label th:for="${firstName}" class="control-label col-sm-2">First Name:</label>
+        <div class="col-sm-4">
+        <input th:field="*{firstName}" class="form-control"/>
         <span th:errors="*{firstName}" class="error"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="${lastName}">Last Name</label>
-        <input th:field="*{lastName}" />
+    <div class="form-group">
+        <label th:for="${lastName}" class="control-label col-sm-2">Last Name:</label>
+        <div class="col-sm-4">
+        <input th:field="*{lastName}" class="form-control"/>
         <span th:errors="*{lastName}" class="error"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="${username}">Username</label>
-        <input th:field="*{username}"/>
+    <div class="form-group">
+        <label th:for="${username}" class="control-label col-sm-2">Username:</label>
+        <div class="col-sm-4">
+        <input th:field="*{username}" class="form-control"/>
         <span th:errors="*{username}" class="error"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="${email}">Email</label>
-        <input th:field="*{email}" />
+    <div class="form-group">
+        <label th:for="${email}" class="control-label col-sm-2">Email:</label>
+        <div class="col-sm-4">
+        <input th:field="*{email}" class="form-control"/>
         <span th:errors="*{email}" class="error"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="${address}">Address</label>
-        <input th:field="*{address}" />
+    <div class="form-group">
+        <label th:for="${address}" class="control-label col-sm-2">Address:</label>
+        <div class="col-sm-4">
+        <input th:field="*{address}" class="form-control"/>
         <span th:errors="*{address}" class="error"></span>
+        </div>
     </div>
 
-    <div>
-        <label th:for="${password}">Password</label>
-        <input type= "password" th:field="*{password}" />
-        <span th:errors="*{password}" class="error"></span>
+    <div class="form-group has-error has-feedback">
+        <label th:for="${password}" class="control-label col-sm-2">Password:</label>
+        <div class="col-sm-4">
+        <input type= "password" th:field="*{password}" class="form-control" th:id="${password}"/>
+        <span th:errors="*{password}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+
+        </div>
     </div>
-    <div>
-        <label th:for="${verify}">Verify Password</label>
-        <input type= "password" th:field="*{verify}" />
+    <div class="form-group">
+        <label th:for="${verify}" class="control-label col-sm-2">Verify Password:</label>
+        <div class="col-sm-4">
+
+        <input type= "password" th:field="*{verify}" class="form-control"/>
         <span th:errors="*{verify}" class="error" ></span>
+        </div>
     </div>
     <span th:text="${verifyError}" class="error"></span>
 
     <br />
-
-    <input type="submit" value="Register"/>
+    <div class="col-sm-3 col-sm-offset-3">
+    <input type="submit" value="Register" class="form-control"/>
+    </div>
 
 </form>
 
