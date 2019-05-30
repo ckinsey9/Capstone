@@ -13,10 +13,11 @@
 <hr />
 </div>
 
-<!--TODO: MAKE THIS WORK
-<p th:unless="${appLists[0]} and ${appLists[0].size()}">
-    No applications! Please start by adding an application using the button below.</p>
-    -->
+
+<div class="col-sm-10 col-sm-offset-1" th:unless="${appLists} and ${appLists.size()}">
+<p>No applications! Please start by adding an application using the Add App button above.</p>
+</div>
+
 
 <form method="post" class="form-horizontal">
     <div class="col-sm-10 col-sm-offset-1">
@@ -75,7 +76,8 @@
 
 
 <hr />
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-8 col-sm-offset-2"
+         th:if="${appLists} and ${appLists.size()}">
 
     <input type="submit" value="Delete Selected App(s)" class="form-control"/>
 
