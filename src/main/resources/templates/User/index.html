@@ -3,20 +3,23 @@
 <head th:replace="fragments :: head">
 </head>
 <body>
-<nav th:replace="fragments :: navigation"></nav>
+<nav th:replace="fragments :: user-navigation"></nav>
 
 
-
-<h1>Application Tracker</h1>
+<div class="col-sm-10 col-sm-offset-1">
+<h1 >Application Tracker</h1>
+</div>
+<div class="col-sm-12">
 <hr />
+</div>
 
 <!--TODO: MAKE THIS WORK
 <p th:unless="${appLists[0]} and ${appLists[0].size()}">
     No applications! Please start by adding an application using the button below.</p>
     -->
 
-<form method="post">
-
+<form method="post" class="form-horizontal">
+    <div class="col-sm-10 col-sm-offset-1">
 <table class="table table-hover "  th:each="applist : ${appLists}">
 
 
@@ -61,6 +64,7 @@
 
 
 </table>
+    </div>
 
 <br />
 
@@ -70,8 +74,8 @@
 
 <hr />
 <nav>
-    <button><a th:href="@{'/home/addApp/' + ${username}}">Add App</a></button> |
-    <input type="submit" value="Delete Selected App(s)" />
+    <button class="form-control"><a th:href="@{'/home/addApp/' + ${username}}">Add App</a></button>
+    <input type="submit" value="Delete Selected App(s)" class="form-control"/>
 </nav>
 </form>
 

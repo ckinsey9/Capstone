@@ -6,11 +6,13 @@
 <body>
 <nav th:replace="fragments :: navigation"></nav>
 
+<div class="col-sm-10 col-sm-offset-1">
 <h1>Welcome to Carme!</h1>
-
 <p>Please fill in the information below to register.</p>
-
+</div>
+<div class="col-sm-12">
 <hr />
+</div>
 
 <form method="post" th:object="${user}" class="form-horizontal">
 
