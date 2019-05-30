@@ -1,7 +1,10 @@
 package com.example.Capstone.Models;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,29 +16,33 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @Size(min=1, max=50)
+    @Pattern(regexp = "^[A-Za-z]{1,30}$", message =
+            "Name must only use letters and be less than 30 characters")
     private String firstName;
 
-    @Size(min=1, max=50)
+    @Pattern(regexp = "^[A-Za-z]{1,30}$", message =
+            "Name must only use letters and be less than 30 characters")
     private String lastName;
 
     @NotNull
-    @Size(min=8, max=30)
+    @Pattern(regexp = "^[A-Za-z0-9]{8,30}$", message = "Username must only use letters " +
+            "or numbers and be 8-30 characters in length")
     private String username;
 
     @NotNull
-    @Size(min=8, max=30, message= "")
+    @Pattern(regexp = "^[\\S]{8,30}$", message = "Password can use any characters except spaces and " +
+            "be 8-30 characters in length")
     private String password;
 
 
-    @Size(min=8, max=30)
+    @Pattern(regexp = "^[\\S]{8,30}$", message = "Password can use any characters except spaces and " +
+            "be 8-30 characters in length")
     private String verify;
 
     @Size(min=1, message = "Please enter a valid address")
     private String address;
 
-    //@NotNull
-    @Size(min=1, max=100, message = "Please enter a valid email")
+    @Email(message = "Please enter a valid email")
     private String email;
 
     @OneToMany

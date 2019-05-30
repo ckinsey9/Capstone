@@ -28,7 +28,7 @@ public class UserController {
     public String userHomePage(@PathVariable String username, Model model) {
         List<Iterable> sortedApps = new ArrayList<>();
 
-        try {
+        //try {
             List<App> userApps = userDao.findByUsername(username).getApps();
 
             List<App> interviewApps = new ArrayList<>();
@@ -67,14 +67,14 @@ public class UserController {
             model.addAttribute("username", username);
             return "User/index";
         }
-        catch (NullPointerException e) {
-            model.addAttribute("title", "Home | " + username);
+        //catch (NullPointerException e) {
+          //  model.addAttribute("title", "Home | " + username);
             //this line used to display just the logged in user's apps
-            model.addAttribute("appLists", sortedApps);
-            model.addAttribute("username", username);
-            return "User/index";
-        }
-    }
+            //model.addAttribute("appLists", sortedApps);
+            //model.addAttribute("username", username);
+            //return "User/index";
+        //}
+    //}
 
     @RequestMapping(value="/{username}", method = RequestMethod.POST)
     public String processRemoveApp(@PathVariable String username,
@@ -135,7 +135,8 @@ public class UserController {
         originalApp.setAll(editApp.getName(),
                             editApp.getCompany(), editApp.getDescription(),
                             editApp.getSalary(), editApp.getLocation(), editApp.getNotes(),
-                            editApp.getWebsite(), editApp.getPhase());
+                            editApp.getWebsite(), editApp.getPhase(),
+                            editApp.getDate());
 
         appDao.save(originalApp);
         return "redirect:/home/" + username;
@@ -143,6 +144,6 @@ public class UserController {
     }
 
 
-//TODO: CHANGE OUT TEMP STYLING FOR STYLE SHEET
+
 }
 

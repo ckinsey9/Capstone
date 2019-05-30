@@ -23,13 +23,13 @@ public class LoginController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("title", "Carme | Homepage");
+        model.addAttribute("title", "Appeaz | Homepage");
         return "Login/index";
     }
 
     @RequestMapping(value="login", method = RequestMethod.GET)
     public String userLogin(Model model) {
-        model.addAttribute("title", "Carme | Login");
+        model.addAttribute("title", "Appeaz | Login");
         model.addAttribute(new User());
         return "Login/login";
     }
@@ -38,7 +38,7 @@ public class LoginController {
     public String processUserLogin(@ModelAttribute @Valid User currentUser, Errors errors,
                                    Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Carme | Login");
+            model.addAttribute("title", "Appeaz | Login");
             model.addAttribute(currentUser);
             return "Login/login";
         }
@@ -53,7 +53,7 @@ public class LoginController {
             }
         }
 
-        model.addAttribute("title", "Carme | Login");
+        model.addAttribute("title", "Appeaz | Login");
         model.addAttribute("verifyError", "Login error: Please try again or register an account");
         model.addAttribute(currentUser);
         return "Login/login";
@@ -64,7 +64,7 @@ public class LoginController {
 
     @RequestMapping(value="register")
     public String userRegister(Model model) {
-        model.addAttribute("title", "Carme | Register");
+        model.addAttribute("title", "Appeaz | Register");
         model.addAttribute(new User());
         return "Login/register";
     }
@@ -73,13 +73,13 @@ public class LoginController {
     public String processUserRegister(@ModelAttribute @Valid User newUser, Errors errors,
                                       Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Carme | Register");
+            model.addAttribute("title", "Appeaz | Register");
             model.addAttribute(newUser);
             return "Login/register";
         }
 
         if (!newUser.getPassword().equals(newUser.getVerify())) {
-            model.addAttribute("title", "Carme | Register");
+            model.addAttribute("title", "Appeaz | Register");
             model.addAttribute("verifyError", "Passwords do not match");
             model.addAttribute(newUser);
             return "Login/register";
@@ -90,7 +90,7 @@ public class LoginController {
         //used to check if the registered username is unique
         for (User user : userDao.findAll()) {
             if (user.getUsername().equals(username)) {
-                model.addAttribute("title", "Carme | Register");
+                model.addAttribute("title", "Appeaz | Register");
                 model.addAttribute("verifyError", "Username taken, please pick another");
                 model.addAttribute(newUser);
                 return "Login/register";

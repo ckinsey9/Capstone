@@ -31,6 +31,26 @@
         </div>
     </div>
 
+
+        <div class="form-group">
+            <label th:for="${date}" class="control-label col-sm-2">Date:</label>
+            <div class="col-sm-4 input-group date" id='datetime'>
+                <input th:field="*{date}" class="form-control" th:value="${app.date}"/>
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <span th:errors="*{date}" class="error"></span>
+            </div>
+            <!--TODO: MAKE THIS JS WORK
+            <script type="text/javascript">
+            $(function () {
+                $('#datetime').datetimepicker();
+            });
+            </script>
+            -->
+        </div>
+
+
     <div class="form-group">
         <label th:for="${description}" class="control-label col-sm-2">Description:</label>
         <div class="col-sm-4">
@@ -106,6 +126,7 @@
     </div>
 
 </form>
+
 
 
 

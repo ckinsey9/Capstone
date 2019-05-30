@@ -1,8 +1,12 @@
 package com.example.Capstone.Models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class App {
@@ -18,6 +22,10 @@ public class App {
     @NotNull
     @Size(min=5, max=30)
     private String company;
+
+    //@NotNull
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    private String date;
 
     @NotNull
     @Size(min=5, max=50)
@@ -43,7 +51,7 @@ public class App {
     private User user;
 
     public App(String name, String company, String description, String salary, String location,
-               String notes, String website, String phase) {
+               String notes, String website, String phase, String date) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -52,6 +60,7 @@ public class App {
         this.notes = notes;
         this.website = website;
         this.phase = phase;
+        this.date = date;
     }
 
     public App() { }
@@ -134,8 +143,16 @@ public class App {
         this.phase = phase;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public void setAll(String name, String company, String description, String salary, String location,
-                       String notes, String website, String phase) {
+                       String notes, String website, String phase, String date) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -144,7 +161,8 @@ public class App {
         this.notes = notes;
         this.website = website;
         this.phase = phase;
+        this.date = date;
     }
 }
 
-//TODO: DECIDE ON MORE FIELDS FOR CLASS
+//TODO: Fix date

@@ -7,7 +7,7 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <div class="col-sm-10 col-sm-offset-1">
-<h1>Welcome to Carme!</h1>
+<h1>Welcome to Appeaz!</h1>
 <p>Please fill in the information below to register.</p>
 </div>
 <div class="col-sm-12">
@@ -37,6 +37,8 @@
         <div class="col-sm-4">
         <input th:field="*{username}" class="form-control"/>
         <span th:errors="*{username}" class="error"></span>
+            <span th:text="${verifyError}" class="error"></span>
+
         </div>
     </div>
 
@@ -56,11 +58,11 @@
         </div>
     </div>
 
-    <div class="form-group has-error has-feedback">
+    <div class="form-group">
         <label th:for="${password}" class="control-label col-sm-2">Password:</label>
         <div class="col-sm-4">
         <input type= "password" th:field="*{password}" class="form-control" th:id="${password}"/>
-        <span th:errors="*{password}" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <span th:errors="*{password}" class="error"></span>
 
         </div>
     </div>
@@ -72,7 +74,7 @@
         <span th:errors="*{verify}" class="error" ></span>
         </div>
     </div>
-    <span th:text="${verifyError}" class="error"></span>
+
 
     <br />
     <div class="col-sm-3 col-sm-offset-3">
@@ -80,6 +82,8 @@
     </div>
 
 </form>
+
+
 
 </body>
 </html>
