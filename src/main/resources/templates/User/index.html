@@ -53,8 +53,10 @@
         <td th:text="${app.salary}"></td>
         <td th:text="${app.phase}"></td>
         <td th:text="${app.notes}"></td>
-        <td><a th:href="${app.website}" target="_blank">Link</a></td>
-        <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}">Edit</a></td>
+        <td><a th:href="${app.website}" target="_blank"
+               class="glyphicon glyphicon-new-window"></a></td>
+        <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}"
+               class="glyphicon glyphicon-edit"></a></td>
         <!--checkbox if want to delete app-->
 
         <td><input type="checkbox" name="appIds" th:value="${app.appId}" th:id="${app.appId}"/>
@@ -66,18 +68,20 @@
 </table>
     </div>
 
-<br />
+
 
 
 
 
 
 <hr />
-<nav>
-    <button class="form-control"><a th:href="@{'/home/addApp/' + ${username}}">Add App</a></button>
+    <div class="col-sm-8 col-sm-offset-2">
+
     <input type="submit" value="Delete Selected App(s)" class="form-control"/>
-</nav>
+
+    </div>
 </form>
+<br />
 
 
 
