@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
-<head th:replace="fragments :: head">
+<head th:fragment="date-head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Bitter:400,700|East+Sea+Dokdo&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+
+
+    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+    <title th:text="${title}">Title</title>
 </head>
 <body>
 <nav th:replace="fragments :: user-navigation"></nav>
@@ -41,13 +57,12 @@
                 </span>
                 <span th:errors="*{date}" class="error"></span>
             </div>
-            <!--TODO: MAKE THIS JS WORK
             <script type="text/javascript">
             $(function () {
                 $('#datetime').datetimepicker();
             });
             </script>
-            -->
+
         </div>
 
 
