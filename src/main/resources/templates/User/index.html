@@ -14,11 +14,7 @@
 </div>
 
 
-<div class="col-sm-10 col-sm-offset-1" th:unless="${appLists} and ${appLists[0].size()}
-     or ${appLists[1].size()}
-     or ${appLists[2].size()}
-     or ${appLists[3].size()}
-     or ${appLists[4].size()}">
+<div class="col-sm-10 col-sm-offset-1" th:unless="${appLists} and ${appLists.size()}">
 <p>No applications! Please start by adding an application using the Add App button above.</p>
 </div>
 
@@ -84,11 +80,7 @@
 
 <hr />
     <div class="col-sm-8 col-sm-offset-2"
-         th:if="${appLists} and ${appLists[0].size()}
-                or ${appLists[1].size()}
-                or ${appLists[2].size()}
-                or ${appLists[3].size()}
-                or ${appLists[4].size()}">
+         th:if="${appLists} and ${appLists.size()}">
 
     <input type="submit" value="Delete Selected App(s)" class="login-button form-control"/>
 

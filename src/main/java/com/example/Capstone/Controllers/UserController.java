@@ -26,9 +26,10 @@ public class UserController {
 
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
     public String userHomePage(@PathVariable String username, Model model) {
-        List<Iterable> sortedApps = new ArrayList<>();
 
-        //try {
+            List<List> sortedApps = new ArrayList<>();
+
+
             List<App> userApps = userDao.findByUsername(username).getApps();
 
             List<App> interviewApps = new ArrayList<>();
@@ -54,6 +55,7 @@ public class UserController {
                     otherApps.add(app);
                 }
             }
+
             sortedApps.add(interviewApps);
             sortedApps.add(workingApps);
             sortedApps.add(submittedApps);
@@ -61,20 +63,18 @@ public class UserController {
             sortedApps.add(rejectedApps);
 
 
-            model.addAttribute("title", "Home | " + username);
+            //first lambda expression to check sortedApps for empty lists
+            sortedApps.removeIf((List appList) -> appList.isEmpty());
+
+
+
+        model.addAttribute("title", "Home | " + username);
             //this line used to display just the logged in user's apps
             model.addAttribute("appLists", sortedApps);
             model.addAttribute("username", username);
             return "User/index";
         }
-        //catch (NullPointerException e) {
-          //  model.addAttribute("title", "Home | " + username);
-            //this line used to display just the logged in user's apps
-            //model.addAttribute("appLists", sortedApps);
-            //model.addAttribute("username", username);
-            //return "User/index";
-        //}
-    //}
+
 
     @RequestMapping(value="/{username}", method = RequestMethod.POST)
     public String processRemoveApp(@PathVariable String username,
