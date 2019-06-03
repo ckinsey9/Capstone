@@ -143,7 +143,46 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "info/{username}", method = RequestMethod.GET)
+    public String userInfo(@PathVariable String username, Model model) {
 
+        User currentUser = userDao.findByUsername(username);
+        model.addAttribute(currentUser);
+
+        return "User/userInfo";
+    }
+
+    @RequestMapping(value= "editInfo/{username}", method = RequestMethod.GET)
+    public String userEditInfo(@PathVariable String username, Model model) {
+        User currentUser = userDao.findByUsername(username);
+        model.addAttribute(currentUser);
+
+        return "User/editInfo";
+    }
+
+    @RequestMapping(value="editInfo/{username}", method = RequestMethod.POST)
+    public String processEditInfo(@PathVariable String username, @ModelAttribute @Valid User editUser,
+            Errors errors,
+            Model model) {
+        User currentUser = userDao.findByUsername(username);
+        if (errors.hasErrors()) {
+            model.addAttribute(editUser);
+            return "User/editInfo";
+        }
+
+        if (!editUser.getPassword().equals(currentUser.getPassword())) {
+            model.addAttribute(editUser);
+            model.addAttribute("verifyError", "Password does not match records");
+            return "User/editInfo";
+        }
+
+        currentUser.setFirstName(editUser.getFirstName());
+        currentUser.setLastName(editUser.getLastName());
+        currentUser.setEmail(editUser.getEmail());
+        currentUser.setAddress(editUser.getAddress());
+        userDao.save(currentUser);
+        return "User/userInfo";
+    }
 
 }
 

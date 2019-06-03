@@ -5,8 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
 public class App {
@@ -23,7 +22,7 @@ public class App {
     @Size(min=5, max=30)
     private String company;
 
-    //@NotNull
+    @NotNull
     @DateTimeFormat(pattern = "MM-dd-yyyy")
     private String date;
 
@@ -165,4 +164,3 @@ public class App {
     }
 }
 
-//TODO: Fix date

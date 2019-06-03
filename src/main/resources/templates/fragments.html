@@ -38,6 +38,8 @@
                 </span>Home</a> </li>
             <li><a th:href="@{'/home/addApp/' + ${username}}">
                 <span class="glyphicon glyphicon-plus"></span>Add App</a></li>
+            <li><a th:href="@{'/home/info/'+ ${username}}">
+            <span class="glyphicon glyphicon-user"></span>User Info</a></li>
             <li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>

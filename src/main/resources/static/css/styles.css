@@ -37,3 +37,7 @@ th {
     color: white;
     background-color: black;
 }
+
+.login-button a {
+    color:inherit;
+}
