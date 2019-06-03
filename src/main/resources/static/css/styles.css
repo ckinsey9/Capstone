@@ -11,8 +11,22 @@
 .error {font-weight:700;
                 color: red;}
 
+th {
+    text-align: center;
+}
+
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
+}
+
+thead {
+    color:white;
+    background-color:black;
+}
+
+thead td {
+        border: 3px solid white;
+
 }
 
 table, th, td {
@@ -24,9 +38,7 @@ h1 {
 font-family: 'Bitter', serif;
 }
 
-th {
 
-}
 
 /*CSS for Landing page */
 .landing-page {
@@ -41,3 +53,6 @@ th {
 .login-button a {
     color:inherit;
 }
+
+/*CSS for table sorting */
+
