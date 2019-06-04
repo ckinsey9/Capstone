@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<nav th:replace="fragments :: user-navigation"></nav>
+
+
+<div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <h1 th:text="'Commute Time: ' + ${username} + ' to ' + ${place}">Commute</h1>
+        </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+            <hr />
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-1 center">
+                <iframe th:src="@{'https://www.google.com/maps/embed/v1/directions?key=AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs&amp;origin=' + ${userAddress} +'&amp;destination=' + ${appAddress} + '&amp;mode=driving'}"
+                        width="600" height="500" frameborder="0" style="border:0" ></iframe>
+
+
+
+
+
+            </div>
+        </div>
+</div>
+
+
+</body>
+<footer th:replace="fragments :: footer"></footer>
+
+</html>

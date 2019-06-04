@@ -99,6 +99,7 @@ function sortTable(n) {
         <th>Phase</th>
         <th>Benefits/Notes</th>
         <th>Website Link</th>
+        <th>Commute Map</th>
         <th>Edit App</th>
         <th>Delete App</th>
 
@@ -107,7 +108,7 @@ function sortTable(n) {
     </thead>
 
 
-    <tbody>
+    <tbody class="userData">
     <tr th:each="app : ${applist}">
         <td th:text="${app.name}"></td>
         <td th:text="${app.company}"></td>
@@ -119,6 +120,8 @@ function sortTable(n) {
         <td th:text="${app.notes}"></td>
         <td><a th:href="${app.website}" target="_blank"
                class="glyphicon glyphicon-new-window"></a></td>
+        <td><a th:href="@{'/home/commuteTime/' + ${username} + '/' + ${app.appId}}"
+                class="glyphicon glyphicon-map-marker"></a></td>
         <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}"
                class="glyphicon glyphicon-edit"></a></td>
         <!--checkbox if want to delete app-->

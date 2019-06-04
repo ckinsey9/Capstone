@@ -38,6 +38,10 @@ h1 {
 font-family: 'Bitter', serif;
 }
 
+.userData td {
+    text-align:center;
+}
+
 
 
 /*CSS for Landing page */

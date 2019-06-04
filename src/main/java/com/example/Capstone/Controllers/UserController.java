@@ -184,5 +184,20 @@ public class UserController {
         return "User/userInfo";
     }
 
+    @RequestMapping(value="commuteTime/{username}/{appId}", method = RequestMethod.GET)
+    public String commuteTime(@PathVariable String username, @PathVariable int appId, Model model) {
+
+        User currentUser = userDao.findByUsername(username);
+        App currentApp = appDao.findOne(appId);
+
+        model.addAttribute("username", currentUser.getUsername());
+        model.addAttribute("place", currentApp.getCompany());
+        model.addAttribute("appAddress", currentApp.getLocation());
+        model.addAttribute("userAddress",currentUser.getAddress());
+
+        return "User/commuteTime";
+
+    }
+
 }
 
