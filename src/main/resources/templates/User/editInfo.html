@@ -28,7 +28,6 @@
         <label th:for="${password}" class="control-label col-sm-2">Password:</label>
         <div class="col-sm-4">
             <input type= "password" th:field="*{password}" class="form-control" th:id="${password}"/>
-            <span th:errors="*{password}" class="error"></span>
             <span th:text="${verifyError}" class="error"></span>
 
 

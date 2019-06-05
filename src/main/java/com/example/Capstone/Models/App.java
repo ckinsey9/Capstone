@@ -1,7 +1,5 @@
 package com.example.Capstone.Models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,28 +13,27 @@ public class App {
     private int appId;
 
     @NotNull
-    @Size(min=5, max=30)
+    @Size(min=1, message = "Required application info")
     private String name;
 
     @NotNull
-    @Size(min=5, max=30)
+    @Size(min=1, message = "Required application info")
     private String company;
 
     @NotNull
-    @DateTimeFormat(pattern = "MM-dd-yyyy")
     private String date;
 
     @NotNull
-    @Size(min=5, max=50)
+    @Size(min=1, max=50, message = "Required application info")
     private String description;
 
     @NotNull
     private String salary;
 
     @NotNull
+    @Size(min=1, message = "Please enter an address or general location")
     private String location;
 
-    //added fields
     @Size(max=250)
     private String notes;
 

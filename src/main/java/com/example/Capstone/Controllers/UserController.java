@@ -191,10 +191,9 @@ public class UserController {
 
         model.addAttribute("title", "User Info | " + username);
 
-        currentUser.setFirstName(editUser.getFirstName());
-        currentUser.setLastName(editUser.getLastName());
-        currentUser.setEmail(editUser.getEmail());
-        currentUser.setAddress(editUser.getAddress());
+        currentUser.setUserEdit(editUser.getFirstName(), editUser.getLastName(),
+                editUser.getEmail(), editUser.getStreet(), editUser.getCityStateZip());
+
         userDao.save(currentUser);
         return "User/userInfo";
     }
@@ -210,7 +209,7 @@ public class UserController {
         model.addAttribute("username", currentUser.getUsername());
         model.addAttribute("place", currentApp.getCompany());
         model.addAttribute("appAddress", currentApp.getLocation());
-        model.addAttribute("userAddress",currentUser.getAddress());
+        model.addAttribute("userAddress",currentUser.getStreet()+currentUser.getCityStateZip());
 
         return "User/commuteTime";
 

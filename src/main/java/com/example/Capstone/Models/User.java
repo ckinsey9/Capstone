@@ -39,8 +39,11 @@ public class User {
             "be 8-30 characters in length")
     private String verify;
 
-    @Size(min=1, message = "Please enter a valid address")
-    private String address;
+    @Size(min=1, message = "Please enter a valid street address")
+    private String street;
+
+    @Pattern(regexp = "^[A-z,. -]+[0-9]{5}$", message = "Please enter the city, state, and zip as shown in the example")
+    private String cityStateZip;
 
     @Email(message = "Please enter a valid email")
     private String email;
@@ -51,13 +54,15 @@ public class User {
 
 
 
-    public User(String firstName, String lastName, String username, String password, String email, String address) {
+    public User(String firstName, String lastName, String username, String password, String email,
+                String street, String cityStateZip) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.address = address;
+        this.street = street;
+        this.cityStateZip = cityStateZip;
     }
 
     public User() {}
@@ -106,14 +111,6 @@ public class User {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getVerify() {
         return verify;
     }
@@ -130,5 +127,29 @@ public class User {
     //Add Method
     public void addApp(App app)  {
         apps.add(app);
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCityStateZip() {
+        return cityStateZip;
+    }
+
+    public void setCityStateZip(String cityStateZip) {
+        this.cityStateZip = cityStateZip;
+    }
+
+    public void setUserEdit(String firstName, String lastName, String email, String street, String cityStateZip) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.street = street;
+        this.cityStateZip = cityStateZip;
     }
 }

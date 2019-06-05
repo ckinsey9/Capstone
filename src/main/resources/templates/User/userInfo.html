@@ -26,7 +26,7 @@
         <div class="col-sm-6">
             <div class="col-sm-offset-1">
 
-    <table class="table" id="userInfo">
+    <table class="table table-hover" id="userInfo">
         <tr>
             <th>First Name</th>
             <td th:text="*{firstName}"></td>
@@ -44,8 +44,12 @@
             <td th:text="*{email}"></td>
         </tr>
         <tr>
-            <th>Address</th>
-            <td th:text="*{address}"></td>
+            <th>Street</th>
+            <td th:text="*{street}"></td>
+        </tr>
+        <tr>
+            <th>City, State &amp; Zip</th>
+            <td th:text="*{cityStateZip}"></td>
         </tr>
     </table>
 
@@ -59,7 +63,7 @@
             <div class="col-sm-offset-1">
 
 
-                <iframe th:src="@{'https://www.google.com/maps/embed/v1/place?key=AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs&amp;q=' + *{address}}"
+                <iframe th:src="@{'https://www.google.com/maps/embed/v1/place?key=AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs&amp;q=' + *{street} + *{cityStateZip}}"
                         width="500" height="350" frameborder="0" style="border:0" ></iframe>
 
 
