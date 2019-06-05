@@ -30,12 +30,12 @@ public class User {
     private String username;
 
     @NotNull
-    @Pattern(regexp = "^[\\S]{8,30}$", message = "Password can use any characters except spaces and " +
+    @Pattern(regexp = "^[\\S]{8,100}$", message = "Password can use any characters except spaces and " +
             "be 8-30 characters in length")
     private String password;
 
 
-    @Pattern(regexp = "^[\\S]{8,30}$", message = "Password can use any characters except spaces and " +
+    @Pattern(regexp = "^[\\S]{8,100}$", message = "Password can use any characters except spaces and " +
             "be 8-30 characters in length")
     private String verify;
 

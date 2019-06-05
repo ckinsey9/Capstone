@@ -30,7 +30,8 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 
 	//TODO: WHY IS SECURITY NOT WORKING
-	//compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	//when localhost prompts user and pass, user = user, pass is in console
 
 }
 

@@ -3,6 +3,7 @@ package com.example.Capstone.Controllers;
 import com.example.Capstone.Models.Data.UserDao;
 import com.example.Capstone.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -18,7 +19,7 @@ public class LoginController {
     @Autowired
     private UserDao userDao;
 
-   // private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
@@ -45,9 +46,9 @@ public class LoginController {
         String username = currentUser.getUsername();
         String password = currentUser.getPassword();
 
-        //TODO: CLEAN THIS UP BY ADDING BOOLEAN METHOD TO USERDAO?
+        //Added BCrypt match method to check hashed password in database
         for (User user : userDao.findAll()) {
-            if (user.getUsername().equals(username) & user.getPassword().equals(password)) {
+            if (user.getUsername().equals(username) & encoder.matches(password, user.getPassword())) {
                 return "redirect:/home/" + username;
             }
         }
@@ -96,11 +97,13 @@ public class LoginController {
             }
         }
 
-        //String safePass = encoder.encode(newUser.getPassword());
-        //newUser.setPassword(safePass);
+        //Testing BCrypt for new user registration
+        String safePass = encoder.encode(newUser.getPassword());
+        newUser.setPassword(safePass);
+        newUser.setVerify(safePass);
+
         userDao.save(newUser);
         return "redirect:/home/" + username;
-        //TODO: BETTER VALIDATION HERE
     }
 
 
