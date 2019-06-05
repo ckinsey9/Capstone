@@ -5,6 +5,7 @@ import com.example.Capstone.Models.Data.AppDao;
 import com.example.Capstone.Models.Data.UserDao;
 import com.example.Capstone.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,6 +24,10 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+
+    //used when checking pass for user info edit
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
     public String userHomePage(@PathVariable String username, Model model) {
@@ -147,6 +152,8 @@ public class UserController {
     public String userInfo(@PathVariable String username, Model model) {
 
         User currentUser = userDao.findByUsername(username);
+        model.addAttribute("title", "User Info | " + username);
+
         model.addAttribute(currentUser);
 
         return "User/userInfo";
@@ -155,6 +162,8 @@ public class UserController {
     @RequestMapping(value= "editInfo/{username}", method = RequestMethod.GET)
     public String userEditInfo(@PathVariable String username, Model model) {
         User currentUser = userDao.findByUsername(username);
+        model.addAttribute("title", "Edit Info | " + username);
+
         model.addAttribute(currentUser);
 
         return "User/editInfo";
@@ -167,14 +176,20 @@ public class UserController {
         User currentUser = userDao.findByUsername(username);
         if (errors.hasErrors()) {
             model.addAttribute(editUser);
+            model.addAttribute("title", "Edit Info | " + username);
+
             return "User/editInfo";
         }
 
-        if (!editUser.getPassword().equals(currentUser.getPassword())) {
+        if (!encoder.matches(editUser.getPassword(), currentUser.getPassword())) {
             model.addAttribute(editUser);
             model.addAttribute("verifyError", "Password does not match records");
+            model.addAttribute("title", "Edit Info | " + username);
+
             return "User/editInfo";
         }
+
+        model.addAttribute("title", "User Info | " + username);
 
         currentUser.setFirstName(editUser.getFirstName());
         currentUser.setLastName(editUser.getLastName());
@@ -189,6 +204,8 @@ public class UserController {
 
         User currentUser = userDao.findByUsername(username);
         App currentApp = appDao.findOne(appId);
+        model.addAttribute("title", "Commute Time | " + username);
+
 
         model.addAttribute("username", currentUser.getUsername());
         model.addAttribute("place", currentApp.getCompany());

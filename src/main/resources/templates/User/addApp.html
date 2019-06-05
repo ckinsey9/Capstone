@@ -50,11 +50,13 @@
 
         <div class="form-group">
             <label th:for="${date}" class="control-label col-sm-2">Date:</label>
-            <div class="col-sm-4 input-group date" id='datetime'>
+            <div class="col-sm-4 ">
+                <div class="input-group date" id='datetime'>
                 <input th:field="*{date}" class="form-control" th:value="${app.date}"/>
-                <span class="input-group-addon">
+                <div class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+                </div>
+                </div>
                 <span th:errors="*{date}" class="error"></span>
             </div>
             <script type="text/javascript">
