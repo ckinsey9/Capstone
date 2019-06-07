@@ -29,7 +29,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
 
-	//TODO: WHY IS SECURITY NOT WORKING
+	//TODO: Learn more about Spring SECURITY 
 	compile("org.springframework.boot:spring-boot-starter-security")
 	//when localhost prompts user and pass, user = user, pass is in console
 
