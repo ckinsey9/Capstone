@@ -19,7 +19,15 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 
         http.
                 authorizeRequests()
-                .anyRequest().permitAll();
+                    //.antMatchers("/", "/login", "/register").permitAll()
+                    //.antMatchers("/home").authenticated()
+                    .anyRequest().permitAll();
+                    //.and()
+                //.formLogin()
+                    //.loginPage("/login").permitAll()
+                    //.usernameParameter("username")
+                    //.passwordParameter("password")
+                    //.and();
                 http.csrf().disable();
 
     }

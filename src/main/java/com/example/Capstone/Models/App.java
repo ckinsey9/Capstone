@@ -1,5 +1,7 @@
 package com.example.Capstone.Models;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -37,7 +39,8 @@ public class App {
     @Size(max=250)
     private String notes;
 
-    @Size(max=250)
+    //@Size(max=250)
+    @URL(protocol = "https", message= "Please enter a valid URL starting with: 'https://'")
     private String website;
 
     @NotNull
