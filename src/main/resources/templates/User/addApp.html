@@ -33,24 +33,46 @@
 
     <div class="form-group">
         <label th:for="${name}" class="control-label col-sm-2">Position:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{name}" class="form-control" th:value="${app.name}"/>
         <span th:errors="*{name}" class="error"></span>
         </div>
+
+        <label th:for="${positionRating}" class="control-label col-sm-2">Position Rating:</label>
+        <div class="col-sm-2">
+                <select th:field="*{positionRating}" th:value="${app.positionRating}" class="form-control">
+                    <option th:each="rating : ${ratings}"
+                            th:text="${rating}"
+                            th:value="${rating}"></option>
+                </select>
+                <span th:errors="*{positionRating}" class="error"></span>
+        </div>
     </div>
+
+
 
     <div class="form-group">
         <label th:for="${company}" class="control-label col-sm-2">Company/School:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{company}" class="form-control" th:value="${app.company}"/>
         <span th:errors="*{company}" class="error"></span>
+        </div>
+
+        <label th:for="${companyRating}" class="control-label col-sm-2">Company/School Rating:</label>
+        <div class="col-sm-2">
+            <select th:field="*{companyRating}" th:value="${app.companyRating}" class="form-control">
+                <option th:each="rating : ${ratings}"
+                        th:text="${rating}"
+                        th:value="${rating}"></option>
+            </select>
+            <span th:errors="*{companyRating}" class="error"></span>
         </div>
     </div>
 
 
         <div class="form-group">
             <label th:for="${date}" class="control-label col-sm-2">Date:</label>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <div class="input-group date" id='datetime'>
                 <input th:field="*{date}" class="form-control" th:value="${app.date}"/>
                 <div class="input-group-addon">
@@ -70,7 +92,7 @@
 
     <div class="form-group">
         <label th:for="${description}" class="control-label col-sm-2">Description:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{description}" class="form-control" th:value="${app.description}"/>
         <span th:errors="*{description}" class="error"></span>
         </div>
@@ -78,16 +100,26 @@
 
     <div class="form-group">
         <label th:for="${location}" class="control-label col-sm-2">Location:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{location}" class="form-control" th:value="${app.location}"
             placeholder="Please use full address for most accurate commute time"/>
         <span th:errors="*{location}" class="error"></span>
+        </div>
+
+        <label th:for="${locationRating}" class="control-label col-sm-2">Location Rating:</label>
+        <div class="col-sm-2">
+            <select th:field="*{locationRating}" th:value="${app.locationRating}" class="form-control">
+                <option th:each="rating : ${ratings}"
+                        th:text="${rating}"
+                        th:value="${rating}"></option>
+            </select>
+            <span th:errors="*{locationRating}" class="error"></span>
         </div>
     </div>
 
     <div class="form-group">
         <label th:for="${website}" class="control-label col-sm-2">Website Link:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{website}" class="form-control" th:value="${app.website}"
                placeholder="Please copy and paste full application website here"/>
         <span th:errors="*{website}" class="error"></span>
@@ -96,15 +128,25 @@
 
     <div class="form-group">
         <label th:for="${notes}" class="control-label col-sm-2">Benefits/Notes:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <input th:field="*{notes}" class="form-control" th:value="${app.notes}"/>
         <span th:errors="*{notes}" class="error"></span>
+        </div>
+
+        <label th:for="${benefitsRating}" class="control-label col-sm-2">Benefits Rating:</label>
+        <div class="col-sm-2">
+            <select th:field="*{benefitsRating}" th:value="${app.benefitsRating}" class="form-control">
+                <option th:each="rating : ${ratings}"
+                        th:text="${rating}"
+                        th:value="${rating}"></option>
+            </select>
+            <span th:errors="*{benefitsRating}" class="error"></span>
         </div>
     </div>
 
     <div class="form-group">
         <label th:for="${salary}" class="control-label col-sm-2">Salary (Yearly):</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <select th:field="*{salary}" th:value="${app.salary}" class="form-control" >
         <option th:value="'Not Applicable'">Not Applicable</option>
         <option th:value="'0-20K'">0-20K</option>
@@ -120,11 +162,21 @@
         </select>
         <span th:errors="*{salary}" class="error"></span>
         </div>
+
+        <label th:for="${salaryRating}" class="control-label col-sm-2">Salary Rating:</label>
+        <div class="col-sm-2">
+            <select th:field="*{salaryRating}" th:value="${app.salaryRating}" class="form-control">
+                <option th:each="rating : ${ratings}"
+                        th:text="${rating}"
+                        th:value="${rating}"></option>
+            </select>
+            <span th:errors="*{salaryRating}" class="error"></span>
+        </div>
     </div>
 
     <div class="form-group">
         <label th:for="${phase}" class="control-label col-sm-2">Phase:</label>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
         <select th:field="*{phase}" th:value="${app.phase}" class="form-control">
             <option th:value="'Working on Application'">Working on Application</option>
             <option th:value="'Application Submitted'">Application Submitted</option>
@@ -143,6 +195,8 @@
     <div class="col-sm-2 col-sm-offset-2">
     <input type="submit" value="Add Application" class="login-button form-control"/>
     </div>
+
+
 
 </form>
 

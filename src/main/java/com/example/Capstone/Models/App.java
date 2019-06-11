@@ -3,8 +3,11 @@ package com.example.Capstone.Models;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 
 
 @Entity
@@ -49,8 +52,34 @@ public class App {
     @ManyToOne
     private User user;
 
+    @NotNull
+    @Min(0)
+    @Max(10)
+    private int positionRating;
+
+    @NotNull
+    @Min(0)
+    @Max(10)
+    private int companyRating;
+
+    @NotNull
+    @Min(0)
+    @Max(10)
+    private int locationRating;
+
+    @NotNull
+    @Min(0)
+    @Max(10)
+    private int benefitsRating;
+
+    @NotNull
+    @Min(0)
+    @Max(10)
+    private int salaryRating;
+
     public App(String name, String company, String description, String salary, String location,
-               String notes, String website, String phase, String date) {
+               String notes, String website, String phase, String date, int positionRating,
+               int companyRating, int locationRating, int benefitsRating, int salaryRating) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -60,6 +89,11 @@ public class App {
         this.website = website;
         this.phase = phase;
         this.date = date;
+        this.positionRating = positionRating;
+        this.companyRating = companyRating;
+        this.locationRating = locationRating;
+        this.benefitsRating = benefitsRating;
+        this.salaryRating = salaryRating;
     }
 
     public App() { }
@@ -151,7 +185,8 @@ public class App {
     }
 
     public void setAll(String name, String company, String description, String salary, String location,
-                       String notes, String website, String phase, String date) {
+                       String notes, String website, String phase, String date, int positionRating,
+                       int benefitsRating, int salaryRating, int companyRating, int locationRating) {
         this.name = name;
         this.company = company;
         this.description = description;
@@ -161,6 +196,76 @@ public class App {
         this.website = website;
         this.phase = phase;
         this.date = date;
+        this.salaryRating = salaryRating;
+        this.benefitsRating = benefitsRating;
+        this.locationRating = locationRating;
+        this.positionRating = positionRating;
+        this.companyRating = companyRating;
     }
+
+    public int getPositionRating() {
+        return positionRating;
+    }
+
+    public void setPositionRating(int positionRating) {
+        this.positionRating = positionRating;
+    }
+
+    public int getCompanyRating() {
+        return companyRating;
+    }
+
+    public void setCompanyRating(int companyRating) {
+        this.companyRating = companyRating;
+    }
+
+    public int getLocationRating() {
+        return locationRating;
+    }
+
+    public void setLocationRating(int locationRating) {
+        this.locationRating = locationRating;
+    }
+
+    public int getBenefitsRating() {
+        return benefitsRating;
+    }
+
+    public void setBenefitsRating(int benefitsRating) {
+        this.benefitsRating = benefitsRating;
+    }
+
+    public int getSalaryRating() {
+        return salaryRating;
+    }
+
+    public void setSalaryRating(int salaryRating) {
+        this.salaryRating = salaryRating;
+    }
+
+    public double totalRatingPercent() {
+        ArrayList<Integer> total = new ArrayList<>();
+        total.add(this.benefitsRating);
+        total.add(this.companyRating);
+        total.add(this.positionRating);
+        total.add(this.salaryRating);
+        total.add(this.locationRating);
+        int finalTotal = 0;
+        int counter = 0;
+        double returnValue = 0;
+        for (Integer rating : total) {
+            if (rating != 0) {
+                finalTotal += rating;
+                counter += 1;
+            }
+        }
+        try {
+            returnValue = finalTotal / counter * 10;
+            return returnValue;
+        } catch (ArithmeticException exception) {
+            return 0;
+        }
+    }
+    //TODO: TEST AND FIX THIS, BETTER DESIGN FOR INDEX PAGE OF IT
 }
 

@@ -94,7 +94,9 @@ public class UserController {
 
     @RequestMapping(value="addApp/{username}", method = RequestMethod.GET)
     public String userAddApp(@PathVariable String username, Model model) {
+        int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
         model.addAttribute("title", "Add App | " + username);
+        model.addAttribute("ratings", ratings);
         model.addAttribute(new App());
         return "User/addApp";
     }
@@ -103,8 +105,11 @@ public class UserController {
     public String processAddApp(@PathVariable String username, @ModelAttribute @Valid App newApp,
                                 Errors errors,
                                 Model model) {
+        int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add App | " + username);
+            model.addAttribute("ratings", ratings);
             model.addAttribute(newApp);
             return "User/addApp";
         }
@@ -119,8 +124,13 @@ public class UserController {
     @RequestMapping(value = "editApp/{username}/{appId}", method = RequestMethod.GET)
     public String userEditApp(@PathVariable int appId, @PathVariable String username,
                               Model model) {
+
+        int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
+
         App editApp = appDao.findOne(appId);
         model.addAttribute("title", "Edit App | " + username);
+        model.addAttribute("ratings", ratings);
+
         model.addAttribute(editApp);
         return "User/editApp";
     }
@@ -130,7 +140,11 @@ public class UserController {
                                      @ModelAttribute @Valid App editApp, Errors errors,
                                      Model model) {
         if (errors.hasErrors()) {
+            int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
+
             model.addAttribute("title", "Edit App | " + username);
+            model.addAttribute("ratings", ratings);
+
             model.addAttribute(editApp);
             return "User/editApp";
         }
@@ -141,7 +155,9 @@ public class UserController {
                             editApp.getCompany(), editApp.getDescription(),
                             editApp.getSalary(), editApp.getLocation(), editApp.getNotes(),
                             editApp.getWebsite(), editApp.getPhase(),
-                            editApp.getDate());
+                            editApp.getDate(), editApp.getPositionRating(),
+                            editApp.getBenefitsRating(), editApp.getSalaryRating(),
+                            editApp.getCompanyRating(), editApp.getLocationRating());
 
         appDao.save(originalApp);
         return "redirect:/home/" + username;

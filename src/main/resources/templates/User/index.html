@@ -45,6 +45,7 @@
         <th>Benefits/Notes</th>
         <th>Website Link</th>
         <th>Commute Map</th>
+        <th>Peaz Rating</th>
         <th>Edit App</th>
         <th>Delete App</th>
 
@@ -67,6 +68,7 @@
                class="glyphicon glyphicon-new-window"></a></td>
         <td><a th:href="@{'/home/commuteTime/' + ${username} + '/' + ${app.appId}}"
                 class="glyphicon glyphicon-map-marker"></a></td>
+        <td th:text="${app.totalRatingPercent()} + '%'"></td>
         <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}"
                class="glyphicon glyphicon-edit"></a></td>
         <!--checkbox if want to delete app-->
