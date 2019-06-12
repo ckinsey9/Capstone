@@ -250,9 +250,8 @@ public class App {
         total.add(this.positionRating);
         total.add(this.salaryRating);
         total.add(this.locationRating);
-        int finalTotal = 0;
-        int counter = 0;
-        double returnValue = 0;
+        double finalTotal = 0;
+        double counter = 0;
         for (Integer rating : total) {
             if (rating != 0) {
                 finalTotal += rating;
@@ -260,8 +259,8 @@ public class App {
             }
         }
         try {
-            returnValue = finalTotal / counter * 10;
-            return returnValue;
+            double returnValue = finalTotal / counter * 10;
+            return Math.round(returnValue*100.0) / 100.0;
         } catch (ArithmeticException exception) {
             return 0;
         }
