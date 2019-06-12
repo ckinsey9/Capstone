@@ -64,6 +64,11 @@ td {
     color:inherit;
 }
 
-/*CSS for table sorting */
+/*CSS for progressbar */
+
+.progress-bar {
+
+margin-bottom: 0px;
+}
 
 
