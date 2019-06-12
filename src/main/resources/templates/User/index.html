@@ -68,7 +68,11 @@
                class="glyphicon glyphicon-new-window"></a></td>
         <td><a th:href="@{'/home/commuteTime/' + ${username} + '/' + ${app.appId}}"
                 class="glyphicon glyphicon-map-marker"></a></td>
-        <td th:text="${app.totalRatingPercent()} + '%'"></td>
+
+        <td th:text="${app.totalRatingPercent()} + '%'" class="progress-bar progress-bar-success progress-bar-striped"
+            role="progressbar" th:aria-valuenow="${app.totalRatingPercent()}"
+            aria-valuemin="0" aria-valuemax="100" th:style="'width:' + ${app.totalRatingPercent()} + '%'"></td>
+
         <td><a th:href="@{'/home/editApp/' + ${username} + '/' + ${app.appId}}"
                class="glyphicon glyphicon-edit"></a></td>
         <!--checkbox if want to delete app-->

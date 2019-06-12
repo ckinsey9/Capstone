@@ -265,6 +265,5 @@ public class App {
             return 0;
         }
     }
-    //TODO: TEST AND FIX THIS, BETTER DESIGN FOR INDEX PAGE OF IT
 }
 
