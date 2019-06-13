@@ -10,6 +10,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -20,6 +24,16 @@ public class LoginController {
     private UserDao userDao;
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    //cookie testing
+    private Cookie userCookie;
+
+    //unnecessary to have request?
+    //@Autowired
+    //private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
@@ -49,6 +63,13 @@ public class LoginController {
         //Added BCrypt match method to check hashed password in database
         for (User user : userDao.findAll()) {
             if (user.getUsername().equals(username) & encoder.matches(password, user.getPassword())) {
+
+                //cookie stuff
+                userCookie = new Cookie("username", username);
+                userCookie.setMaxAge(60*60*2);
+                //cookie.setDomain(); need to do this when I have a domain
+                userCookie.setPath("/");
+                response.addCookie(userCookie);
                 return "redirect:/home/" + username;
             }
         }
@@ -101,9 +122,26 @@ public class LoginController {
         String safePass = encoder.encode(newUser.getPassword());
         newUser.setPassword(safePass);
         newUser.setVerify(safePass);
-
         userDao.save(newUser);
+
+        //cookie stuff
+        userCookie = new Cookie("username", username);
+        userCookie.setMaxAge(60*60*2);
+        //cookie.setDomain(); need to do this when I have a domain
+        userCookie.setPath("/");
+        response.addCookie(userCookie);
         return "redirect:/home/" + username;
+    }
+
+    @RequestMapping(value = "logoutPage")
+    public String logoutProcess() {
+        userCookie = new Cookie("username", "");
+        userCookie.setMaxAge(0);
+        userCookie.setPath("/");
+        response.addCookie(userCookie);
+
+        return "redirect:";
+
     }
 
 

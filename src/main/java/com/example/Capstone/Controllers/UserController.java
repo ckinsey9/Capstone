@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,9 @@ public class UserController {
 
     //used when checking pass for user info edit
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    //testing cookie set up
+    private Cookie cookie;
 
 
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
