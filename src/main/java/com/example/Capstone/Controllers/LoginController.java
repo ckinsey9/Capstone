@@ -28,10 +28,6 @@ public class LoginController {
     //cookie testing
     private Cookie userCookie;
 
-    //unnecessary to have request?
-    //@Autowired
-    //private HttpServletRequest request;
-
     @Autowired
     private HttpServletResponse response;
 

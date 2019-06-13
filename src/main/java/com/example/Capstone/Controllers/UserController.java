@@ -31,8 +31,6 @@ public class UserController {
     //used when checking pass for user info edit
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    //testing cookie set up
-    private Cookie cookie;
 
     @Autowired
     private HttpServletRequest request;
@@ -42,8 +40,19 @@ public class UserController {
     public String userHomePage(@PathVariable String username, Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
         }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
+        }
+
 
             List<List> sortedApps = new ArrayList<>();
 
@@ -109,7 +118,17 @@ public class UserController {
     public String userAddApp(@PathVariable String username, Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
         }
 
         int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
@@ -144,7 +163,17 @@ public class UserController {
                               Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
         }
 
         int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
@@ -190,7 +219,17 @@ public class UserController {
     public String userInfo(@PathVariable String username, Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
         }
 
 
@@ -206,7 +245,17 @@ public class UserController {
     public String userEditInfo(@PathVariable String username, Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
         }
 
         User currentUser = userDao.findByUsername(username);
@@ -250,7 +299,17 @@ public class UserController {
     public String commuteTime(@PathVariable String username, @PathVariable int appId, Model model) {
 
         if (WebUtils.getCookie(request, "username") == null) {
-            return "redirect:/login";
+            return "redirect:/logoutPage";
+        }
+
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username")) {
+                if (!cookie.getValue().equals(username)) {
+                    return "redirect:/logoutPage";
+                }
+            }
         }
 
         User currentUser = userDao.findByUsername(username);
