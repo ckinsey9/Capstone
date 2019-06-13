@@ -38,7 +38,7 @@
         <span th:errors="*{name}" class="error"></span>
         </div>
 
-        <label th:for="${positionRating}" class="control-label col-sm-2">Position Rating:</label>
+        <label th:for="${positionRating}" class="control-label col-sm-2">Position Rating:*</label>
         <div class="col-sm-2">
                 <select th:field="*{positionRating}" th:value="${app.positionRating}" class="form-control">
                     <option th:each="rating : ${ratings}"
@@ -58,7 +58,7 @@
         <span th:errors="*{company}" class="error"></span>
         </div>
 
-        <label th:for="${companyRating}" class="control-label col-sm-2">Company/School Rating:</label>
+        <label th:for="${companyRating}" class="control-label col-sm-2">Company/School Rating:*</label>
         <div class="col-sm-2">
             <select th:field="*{companyRating}" th:value="${app.companyRating}" class="form-control">
                 <option th:each="rating : ${ratings}"
@@ -106,7 +106,7 @@
         <span th:errors="*{location}" class="error"></span>
         </div>
 
-        <label th:for="${locationRating}" class="control-label col-sm-2">Location Rating:</label>
+        <label th:for="${locationRating}" class="control-label col-sm-2">Location Rating:*</label>
         <div class="col-sm-2">
             <select th:field="*{locationRating}" th:value="${app.locationRating}" class="form-control">
                 <option th:each="rating : ${ratings}"
@@ -133,7 +133,7 @@
         <span th:errors="*{notes}" class="error"></span>
         </div>
 
-        <label th:for="${benefitsRating}" class="control-label col-sm-2">Benefits Rating:</label>
+        <label th:for="${benefitsRating}" class="control-label col-sm-2">Benefits Rating:*</label>
         <div class="col-sm-2">
             <select th:field="*{benefitsRating}" th:value="${app.benefitsRating}" class="form-control">
                 <option th:each="rating : ${ratings}"
@@ -163,7 +163,7 @@
         <span th:errors="*{salary}" class="error"></span>
         </div>
 
-        <label th:for="${salaryRating}" class="control-label col-sm-2">Salary Rating:</label>
+        <label th:for="${salaryRating}" class="control-label col-sm-2">Salary Rating:*</label>
         <div class="col-sm-2">
             <select th:field="*{salaryRating}" th:value="${app.salaryRating}" class="form-control">
                 <option th:each="rating : ${ratings}"
@@ -191,7 +191,15 @@
 
 
     <br />
-
+    <div class="col-sm-offset-1">
+    <strong><p class="error">*Peaz Ratings: Used to provide a simple percentage that reflects how much you like this job/school.</p></strong>
+    <ul>
+        <li><strong>10 = Perfect rating!</strong> Example: The benefits of this job are incredible!</li>
+        <li><strong>1 = Worst rating.</strong> Example: The location of this job is horrible with a huge commute.</li>
+        <li><strong>0 = Rating not applicable and will not be factored into percentage.</strong> Example: Volunteer position with no salary.</li>
+    </ul>
+    </div>
+    <br/>
     <div class="col-sm-2 col-sm-offset-2">
     <input type="submit" value="Add Application" class="login-button form-control"/>
     </div>
