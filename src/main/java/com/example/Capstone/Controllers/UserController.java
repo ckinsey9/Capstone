@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +34,16 @@ public class UserController {
     //testing cookie set up
     private Cookie cookie;
 
+    @Autowired
+    private HttpServletRequest request;
+
 
     @RequestMapping(value="/{username}", method = RequestMethod.GET)
     public String userHomePage(@PathVariable String username, Model model) {
+
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
 
             List<List> sortedApps = new ArrayList<>();
 
@@ -98,6 +107,11 @@ public class UserController {
 
     @RequestMapping(value="addApp/{username}", method = RequestMethod.GET)
     public String userAddApp(@PathVariable String username, Model model) {
+
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
+
         int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
         model.addAttribute("title", "Add App | " + username);
         model.addAttribute("ratings", ratings);
@@ -128,6 +142,10 @@ public class UserController {
     @RequestMapping(value = "editApp/{username}/{appId}", method = RequestMethod.GET)
     public String userEditApp(@PathVariable int appId, @PathVariable String username,
                               Model model) {
+
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
 
         int[] ratings = {0, 1,2,3,4,5,6,7,8,9,10};
 
@@ -171,6 +189,11 @@ public class UserController {
     @RequestMapping(value = "info/{username}", method = RequestMethod.GET)
     public String userInfo(@PathVariable String username, Model model) {
 
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
+
+
         User currentUser = userDao.findByUsername(username);
         model.addAttribute("title", "User Info | " + username);
 
@@ -181,6 +204,11 @@ public class UserController {
 
     @RequestMapping(value= "editInfo/{username}", method = RequestMethod.GET)
     public String userEditInfo(@PathVariable String username, Model model) {
+
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
+
         User currentUser = userDao.findByUsername(username);
         model.addAttribute("title", "Edit Info | " + username);
 
@@ -220,6 +248,10 @@ public class UserController {
 
     @RequestMapping(value="commuteTime/{username}/{appId}", method = RequestMethod.GET)
     public String commuteTime(@PathVariable String username, @PathVariable int appId, Model model) {
+
+        if (WebUtils.getCookie(request, "username") == null) {
+            return "redirect:/login";
+        }
 
         User currentUser = userDao.findByUsername(username);
         App currentApp = appDao.findOne(appId);
