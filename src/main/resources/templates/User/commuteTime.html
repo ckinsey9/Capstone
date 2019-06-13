@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-                <iframe th:src="@{'https://www.google.com/maps/embed/v1/directions?key=AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs&amp;origin=' + ${userAddress} +'&amp;destination=' + ${appAddress} + '&amp;mode=driving'}"
+                <iframe th:src="@{'https://www.google.com/maps/embed/v1/directions?key=' + ${googleKey} + '&amp;origin=' + ${userAddress} +'&amp;destination=' + ${appAddress} + '&amp;mode=driving'}"
                         class="center-block" width="700" height="400" frameborder="0" style="border:0" ></iframe>
 
 

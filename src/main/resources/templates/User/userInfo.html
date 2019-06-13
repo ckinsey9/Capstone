@@ -63,7 +63,7 @@
             <div class="col-sm-offset-1">
 
 
-                <iframe th:src="@{'https://www.google.com/maps/embed/v1/place?key=AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs&amp;q=' + *{street} + *{cityStateZip}}"
+                <iframe th:src="@{'https://www.google.com/maps/embed/v1/place?key=' + ${googleKey} + '&amp;q=' + *{street} + *{cityStateZip}}"
                         width="500" height="350" frameborder="0" style="border:0" ></iframe>
 
 

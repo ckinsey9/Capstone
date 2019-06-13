@@ -235,7 +235,7 @@ public class UserController {
 
         User currentUser = userDao.findByUsername(username);
         model.addAttribute("title", "User Info | " + username);
-
+        model.addAttribute("googleKey", "AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs");
         model.addAttribute(currentUser);
 
         return "User/userInfo";
@@ -320,6 +320,7 @@ public class UserController {
         model.addAttribute("username", currentUser.getUsername());
         model.addAttribute("place", currentApp.getCompany());
         model.addAttribute("appAddress", currentApp.getLocation());
+        model.addAttribute("googleKey", "AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs");
         model.addAttribute("userAddress",currentUser.getStreet()+currentUser.getCityStateZip());
 
         return "User/commuteTime";
