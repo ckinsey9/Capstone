@@ -16,11 +16,11 @@ public class User {
     @GeneratedValue
     private int id;
 
-    @Pattern(regexp = "^[A-Za-z]{1,30}$", message =
+    @Pattern(regexp = "^[A-Za-z-]{1,30}$", message =
             "Name must only use letters and be less than 30 characters")
     private String firstName;
 
-    @Pattern(regexp = "^[A-Za-z]{1,30}$", message =
+    @Pattern(regexp = "^[A-Za-z-]{1,30}$", message =
             "Name must only use letters and be less than 30 characters")
     private String lastName;
 

@@ -25,6 +25,7 @@
 
 <form method="post" class="form-horizontal">
     <div class="col-sm-12 ">
+        <div class="table-responsive">
 <table id="userApps" class="table table-hover"  th:each="applist : ${appLists}">
 
 
@@ -91,6 +92,7 @@
 
 
 </table>
+        </div>
 
     <div th:if="${appLists} and ${appLists.size()}">
         <strong><p class="error">*Peaz Rating: Provides simple percentage based on your category ratings when adding an application to the tracker.</p></strong>
@@ -111,6 +113,7 @@
 
     </div>
 </form>
+
 <br />
 
 

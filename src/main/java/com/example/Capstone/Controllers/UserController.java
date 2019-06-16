@@ -287,6 +287,7 @@ public class UserController {
         }
 
         model.addAttribute("title", "User Info | " + username);
+        model.addAttribute("googleKey", "AIzaSyDzT-X3rQbnEEA1BtfBrifYqeQiQ0giYJs");
 
         currentUser.setUserEdit(editUser.getFirstName(), editUser.getLastName(),
                 editUser.getEmail(), editUser.getStreet(), editUser.getCityStateZip());
